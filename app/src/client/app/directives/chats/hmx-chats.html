@@ -1,0 +1,10 @@
+<md-list>
+  <md-list-item class="md-2-line" ng-class="{'grey lighten-3': !chat.watched }" ng-repeat-start="chat in chats" ng-click="showAlert(chat)">
+    <img ng-src="{{chat.avatar}}" class="md-avatar" alt="" />
+    <div class="md-list-chat-text">
+      <h3 class="md-body-2" style="margin-top: 10px; margin-bottom: 0;">{{chat.name}}</h3>
+      <span class="md-body-1">{{chat.message}}</span>
+    </div>
+  </md-list-item>
+  <md-divider ng-repeat-end></md-divider>
+</md-list>

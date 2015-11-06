@@ -1,0 +1,22 @@
+.search-options {
+  height: 100%;
+  md-tab-content {
+    div[md-tabs-template] {
+      height: 100%;
+    }
+  }
+}
+
+.google-map-wrapper {
+  height: 100%;
+}
+
+google-map {
+  height: 100vh;
+}
+
+@media #{$large-and-up} {
+  google-map {
+    height: calc(100vh - #{$navbar-height-medium-screen-up});
+  }
+}

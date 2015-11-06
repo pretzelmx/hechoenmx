@@ -1,0 +1,119 @@
+{
+  "name": "Organization",
+  "plural": "organizations",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "organizations"
+    }
+  },
+  "properties": {
+    "created": {
+      "type": "date",
+      "default": "$now"
+    },
+    "updated": {
+      "type": "date",
+      "default": "$now"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "avatar": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "cover": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    },
+    "founded": {
+      "type": "date"
+    },
+    "email": {
+      "type": "string"
+    },
+    "activity": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "number"
+    },
+    "followers": {
+      "type": "number"
+    },
+    "visits": {
+      "type": "number"
+    },
+    "phones": {
+      "type": [
+        "object"
+      ]
+    },
+    "links": {
+      "type": [
+        "object"
+      ]
+    },
+    "locationInfo": {
+      "type": "object"
+    },
+    "location": {
+      "type": "GeoPoint"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owners": {
+      "type": "hasMany",
+      "model": "UserModel",
+      "through": "Owner"
+    },
+    "stack": {
+      "type": "hasMany",
+      "model": "Technology",
+      "through": "Stack"
+    },
+    "projects": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "organizationId"
+    },
+    "team": {
+      "type": "hasMany",
+      "model": "UserModel",
+      "through": "Team"
+    },
+    "posts": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "organizationId"
+    },
+    "images": {
+      "type": "hasMany",
+      "model": "CDN",
+      "foreignKey": "organizationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

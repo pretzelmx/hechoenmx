@@ -1,0 +1,69 @@
+{
+  "name": "CDN",
+  "plural": "cdn",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "cdn"
+    }
+  },
+  "properties": {
+    "created": {
+      "type": "date",
+      "default": "$now"
+    },
+    "updated": {
+      "type": "date",
+      "default": "$now"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "file": {
+      "type": "string"
+    },
+    "data": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "UserModel",
+      "foreignKey": "userId"
+    },
+    "organization": {
+      "type": "belongsTo",
+      "model": "Organization",
+      "foreignKey": "organizationId"
+    },
+    "post": {
+      "type": "belongsTo",
+      "model": "Post",
+      "foreignKey": "postId"
+    },
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": "projectId"
+    },
+    "technology": {
+      "type": "belongsTo",
+      "model": "Technology",
+      "foreignKey": "technologyId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

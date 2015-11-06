@@ -1,0 +1,27 @@
+<md-content class="blue-grey lighten-5" layout="column" layout-align="center center" flex>
+  <div class="signup-form-wrapper">
+    <h1 class="md-subhead text-center">Regístrate y crea tu cuenta en HMX</h1>
+    <form name="loginForm" class="signup-form white md-whiteframe-1dp md-padding" novalidate>
+      <div class="signup-form-header" layout="column" layout-align="center center">
+        <md-icon class="md-80 teal-text">account_circle</md-icon>
+      </div>
+      <md-input-container>
+        <label>Correo electrónico</label>
+        <input type="email" ng-model="vm.user.email" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Contraseña</label>
+        <input type="password" minlength="8" ng-model="vm.user.password" required>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="showConfirm($event, '', 'En la versión completa se envía un correo electrónico al usuario para activar su nueva cuenta :D', 'home');" ng-disabled="loginForm.$invalid" aria-label="Iniciar sesión" flex>registrarme</md-button>
+      <md-checkbox ng-model="vm.user.acceptTOS" required>
+        Acepto los <a href="" ng-click="showAlert($event, '', 'En la versión completa se muestran los Términos y condiciones del servicio tal como los indique la dependencia :D')">términos y condiciones del servicio</a>
+      </md-checkbox>
+    </form>
+    <br>
+    <div layout="row" layout-sm="column" layout-align="center center">
+      <span>¿Ya tienes una cuenta?</span>
+      <md-button class="md-primary" ui-sref="login">inicia sesión</md-button>
+    </div>
+  </div>
+</md-content>

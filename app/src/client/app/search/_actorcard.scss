@@ -1,0 +1,32 @@
+.hmx-actorcard {
+  display: inline-block;
+  max-width: 310px;
+  .image-wrapper {
+    padding-left: 16px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  md-card {
+    height: 155px;
+    cursor: pointer;
+    position: relative;
+    &:focus {
+      outline: none !important;
+    }
+  }
+  md-card-content {
+    .md-title {
+      margin: 8px 0;
+    }
+    .md-subheader {
+      margin: 4px 0;
+    }
+  }
+  .md-actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}

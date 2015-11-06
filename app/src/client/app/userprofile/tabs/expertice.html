@@ -1,0 +1,43 @@
+<md-tab-content class="grey lighten-4">
+  <div layout="row">
+    <div layout="column" flex flex-gt-md="80" flex-offset-gt-md="10">
+      <div layout="column" layout-gt-md="row">
+        <div layout="column" flex flex-gt-md="20">
+          <md-card class="timeline-filters" layout="column">
+            <md-card-content>
+              <md-checkbox ng-checked="filters.accreditation || filters.academic || filters.business || filters.certification" ng-click="toggleAllAreas()">
+                Todas las áreas
+              </md-checkbox>
+              <md-checkbox class="md-primary" ng-model="filters.accreditation">
+                <span class="md-body-1">
+                Acreditaciones
+              </span>
+              </md-checkbox>
+              <md-checkbox class="md-primary" ng-model="filters.academic">
+                <span class="md-body-1">
+                Logros académicos
+              </span>
+              </md-checkbox>
+              <md-checkbox class="md-primary" ng-model="filters.business">
+                <span class="md-body-1">
+                Ámbito laboral
+              </span>
+              </md-checkbox>
+              <md-checkbox class="md-primary" ng-model="filters.certification">
+                <span class="md-body-1">
+                Certificaciones
+              </span>
+              </md-checkbox>
+            </md-card-content>
+            <md-datepicker ng-model="dates.initial" md-placeholder="A partir del"></md-datepicker>
+            <md-datepicker ng-model="dates.final" md-placeholder="Hasta el"></md-datepicker>
+            <md-button class="md-primary" ng-click="dates.initial = ''; dates.final = '';">Limpiar fechas</md-button>
+          </md-card>
+        </div>
+        <div layout="column" flex flex-gt-md="80" height="100%">
+          <hmx-timeline events="filtered.expertice"></hmx-timeline>
+        </div>
+      </div>
+    </div>
+  </div>
+</md-tab-content>

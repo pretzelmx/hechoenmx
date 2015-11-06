@@ -1,0 +1,52 @@
+<md-content class="search-page" ng-class="{'grey lighten-4': search.view.cards }" layout="row" flex>
+  <div layout="column" flex>
+    <div class="no-matches md-padding md-headline" ng-if="search.done && !search.filtered.length" style="text-align: center;">
+      No se encontraron coincidencias <span ng-if="search.term">para <strong>"{{ search.term }}"</strong></span><span ng-if="!search.term">con los filtros aplicados</span>
+      <br>
+      <br>
+      <md-icon ng-class="{'md-100': $mdMedia('gt-sm'), 'md-50': $mdMedia('sm')}">mood_bad</md-icon>
+      <br>
+      <br>
+      <br ng-hide="$mdMedia('sm')">
+      <md-button class="md-raised md-primary" ng-click="search.restore()">limpiar filtros</md-button>
+    </div>
+    <div class="actors" ng-if="search.view.list" ng-class="{ 'sidenav-locked': search.sidenav.locked }" layout="column">
+      <md-list flex>
+        <md-list-item class="md-2-line" ng-repeat-start="actor in search.filtered" ng-click="search.select(actor)">
+          <img alt="{{ actor.name }}" ng-src="{{actor.avatar}}" class="md-avatar" ng-style="{border: '2px solid '+ actorsColor[actor.type]}">
+          <div class="md-list-item-text">
+            <h3 md-highlight-text="search.term" md-highlight-flags="i">
+            {{ actor.name }}
+            </h3>
+            <p md-highlight-text="search.term" md-highlight-flags="i">{{ actor.location.city }}, {{ actor.location.state }}</p>
+          </div>
+          <md-button class="md-icon-button" aria-label="Go page" ui-sref="page({ pageId: actor.slug, tabId: 'acerca-de' })">
+            <md-icon>arrow_forward</md-icon>
+          </md-button>
+        </md-list-item>
+        <md-divider ng-repeat-end></md-divider>
+      </md-list>
+    </div>
+    <div class="md-padding actors" ng-if="search.view.cards" ng-class="{ 'sidenav-locked': search.sidenav.locked }" layout="column" layout-gt-sm="row" layout-align="center">
+      <div class="hmx-actorcard" ng-repeat="actor in search.filtered">
+        <md-card layout="row" ng-class="{ 'md-whiteframe-4dp': search.selected._id === actor._id }" ng-click="search.select(actor)">
+          <md-icon ng-style="{color: actorsColor[actor.type], position: 'absolute'}">bookmark</md-icon>
+          <div class="image-wrapper" layout="column" layout-align="center center">
+            <img ng-src="{{actor.avatar}}" alt="image caption">
+          </div>
+          <div layout="column" flex>
+            <md-card-content>
+              <h4 class="md-title" md-highlight-text="search.term" md-highlight-flags="i">{{ actor.name }}</h4>
+              <div class="md-subheader" md-highlight-text="search.term" md-highlight-flags="i">{{ actor.location.city }}, {{ actor.location.state }}</div>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="end">
+              <md-button class="md-icon-button" ui-sref="page({ pageId: actor.slug, tabId: 'acerca-de' })">
+                <md-icon>arrow_forward</md-icon>
+              </md-button>
+            </div>
+          </div>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</md-content>

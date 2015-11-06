@@ -1,0 +1,44 @@
+.login-form-wrapper {
+  max-width: 280px;
+  position: relative;
+}
+
+.login-form {
+  min-width: 280px;
+  position: relative;
+  md-progress-circular {
+    top: 0 !important;
+  }
+  .material-icons {
+    &.md-80 {
+      position: absolute;
+      top: 0px;
+      left: 108px;
+      font-size: 80px;
+    }
+  }
+  .login-form-header {
+    height: 80px;
+  }
+  .md-button {
+    width: calc(100% - 16px);
+  }
+}
+
+@media #{$medium-and-up} {
+  .login-form-wrapper {
+    min-width: 415px;
+  }
+  .login-form {
+    min-width: 280px;
+    md-progress-circular {
+      top: -1px;
+    }
+    .material-icons {
+      &.md-80 {
+        top: 16px;
+        left: 168px;
+      }
+    }
+  }
+}

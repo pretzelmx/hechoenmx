@@ -1,0 +1,38 @@
+{
+  "name": "Stack",
+  "plural": "stacks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "stacks"
+    }
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "userModel": {
+      "type": "belongsTo",
+      "model": "UserModel",
+      "foreignKey": "userId"
+    },
+    "organization": {
+      "type": "belongsTo",
+      "model": "Organization",
+      "foreignKey": "organizationId"
+    },
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": "projectId"
+    },
+    "technology": {
+      "type": "belongsTo",
+      "model": "Technology",
+      "foreignKey": "technologyId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

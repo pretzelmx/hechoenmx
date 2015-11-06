@@ -1,0 +1,44 @@
+{
+  "name": "Technology",
+  "plural": "technologies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "technologies"
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "images": {
+      "type": "hasMany",
+      "model": "CDN",
+      "foreignKey": "technologyId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

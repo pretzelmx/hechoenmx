@@ -1,0 +1,13 @@
+<md-tab-content class="md-padding grey lighten-4">
+  <md-card ng-if="page.links.length" flex flex-offset-gt-sm="25" flex-gt-sm="50">
+      <div class="md-padding md-title amber white-text">
+        <md-icon class="white-text">verified_user</md-icon> Tecnologías
+      </div>
+      <md-card-content class="hmx-wrap" layout="row">
+        <div ng-repeat="hability in page.habilities" flex flex-gt-sm="33" layout="row" layout-align="start center" style="margin-bottom: 16px;">
+          <img class="hability-image" ng-src="{{hability.image}}">
+          <span class="md-body-1">{{hability.name}}</span>
+        </div>
+      </md-card-content>
+    </md-card>
+</md-tab-content>

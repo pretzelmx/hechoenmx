@@ -1,0 +1,28 @@
+{
+  "name": "Owner",
+  "plural": "owners",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "org.owners"
+    }
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "userModel": {
+      "type": "belongsTo",
+      "model": "UserModel",
+      "foreignKey": "userId"
+    },
+    "organization": {
+      "type": "belongsTo",
+      "model": "Organization",
+      "foreignKey": "organizationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

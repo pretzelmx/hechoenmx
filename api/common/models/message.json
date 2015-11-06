@@ -1,0 +1,43 @@
+{
+  "name": "Message",
+  "plural": "messages",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "users.messages"
+    }
+  },
+  "properties": {
+    "created": {
+      "type": "date",
+      "default": "$now"
+    },
+    "updated": {
+      "type": "date",
+      "default": "$now"
+    },
+    "type": {
+      "type": "number"
+    },
+    "information": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sender": {
+      "type": "belongsTo",
+      "model": "UserModel",
+      "foreignKey": "senderId"
+    },
+    "receiver": {
+      "type": "belongsTo",
+      "model": "UserModel",
+      "foreignKey": "receiverId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

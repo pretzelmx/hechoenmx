@@ -1,0 +1,37 @@
+/*** Colors ***/
+$primary-color: color("teal", "lighten-2") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("red", "accent-4") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+
+/*** Badges ***/
+$badge-bg-color: $secondary-color !default;
+
+$navbar-height-small-screen: 48px !default;
+$navbar-height-medium-screen-up: 64px !default;
+
+$cover-page-height-small-screen: 200px !default;
+$cover-page-height-medium-screen: 250px !default;
+$cover-page-height-large-screen: 300px !default;
+
+$fab-mini-height: 48px !default;
+
+/*** Global ***/
+// Media Query Ranges
+$small-screen: 600px !default;
+$medium-screen: 960px !default;
+$large-screen: 1200px !default;
+$small-screen-up: 601px !default;
+$medium-screen-up: 961px !default;
+$large-screen-up: 1201px !default;
+
+$small-only: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+$large-only: "only screen and (min-width : #{$medium-screen-up}) and (max-width : #{$large-screen})" !default;
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$xlarge-and-up: "only screen and (min-width : #{$large-screen-up})" !default;

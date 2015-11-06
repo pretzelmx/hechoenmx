@@ -1,0 +1,26 @@
+<md-content class="blue-grey lighten-5" layout="column" layout-align="center center" flex>
+  <div class="login-form-wrapper">
+    <h1 class="md-subhead text-center">Inicia sesión para acceder a HMX</h1>
+    <form name="loginForm" class="login-form white md-whiteframe-1dp md-padding" ng-submit="login()" novalidate>
+      <div class="login-form-header" layout="column" layout-align="center center">
+        <md-progress-circular class="md-accent" ng-show="waiting" md-diameter="88px" md-mode="indeterminate"></md-progress-circular>
+        <md-icon class="md-80 teal-text">account_circle</md-icon>
+      </div>
+      <md-input-container>
+        <label>Correo electrónico</label>
+        <input type="email" ng-model="credentials.email" required>
+      </md-input-container>
+      <md-input-container>
+        <label>Contraseña</label>
+        <input type="password" minlength="3" ng-model="credentials.password" required>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-disabled="loginForm.$invalid || waiting" aria-label="Iniciar sesión" flex>iniciar sesión</md-button>
+      <md-button class="md-primary">¿olvidaste tu contraseña?</md-button>
+    </form>
+    <br>
+    <div layout="row" layout-sm="column" layout-align="center center">
+      <span>¿Aún no tienes una cuenta?</span>
+      <md-button class="md-primary" ui-sref="signup">regístrate</md-button>
+    </div>
+  </div>
+</md-content>

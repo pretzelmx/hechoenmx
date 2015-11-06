@@ -1,0 +1,53 @@
+<md-content class="grey lighten-4" layout="column">
+  <div class="timeline-event-wrapper" layout="row" layout-align="start center">
+    <div class="timeline-event-right" layout="column" flex flex-gt-sm="50" flex-offset-gt-sm="50">
+      <div layout="row">
+        <md-button class="md-fab white red-text" aria-label="Hoy" layout="column" layout-align="center center" flex>
+          <md-icon class="red-text" style="position: absolute; top: 10px; left: 16px;">event</md-icon>
+          <span class="md-caption" style="position: absolute; top: 12px; left: 15px;">Hoy</span>
+        </md-button>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-event-wrapper" ng-repeat="event in events | orderBy: '-date'" layout="row" layout-align="start center">
+    <div ng-class="{ 'timeline-event-left': $even && !$mdMedia('sm'), 'timeline-event-right': $odd || $mdMedia('sm')}" layout="column" flex flex-gt-sm="50">
+      <div layout="row">
+        <md-card>
+          <md-card-content class="md-padding">
+            <h4 class="md-title">{{event.title}}</h4>
+            <div class="md-body-1 grey-text text-darken-2">
+              <md-icon class="mg-r">event</md-icon> {{ moment(event.date).format('MMMM [de] YYYY') }}</div>
+          </md-card-content>
+          <div class="md-actions" layout="row">
+            <md-button class="md-icon-button" ng-if="event.doc && !event.showDoc" ng-click="event.showDoc = true;" aria-label="Ver más">
+              <md-icon>expand_more</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-if="event.showDoc" ng-click="event.showDoc = false;" aria-label="Ver más">
+              <md-icon>expand_less</md-icon>
+            </md-button>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-if="event.showDoc" ng-click="showDoc($event, event.doc)" aria-label="Ver más">
+              <md-icon>zoom_in</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="event.liked = !event.liked" aria-label="Ver más">
+              <md-icon ng-hide="event.liked">favorite_outline</md-icon>
+              <md-icon class="md-accent" ng-show="event.liked">favorite</md-icon>
+            </md-button>
+          </div>
+          <md-card-content class="md-padding" ng-show="event.showDoc" layout="column" layout-align="center center">
+            <img class="hmx-hoverable" ng-src="{{event.doc}}" ng-click="showDoc($event, event.doc)">
+          </md-card-content>
+        </md-card>
+        <md-button class="md-fab" ng-class="colors[event.type] + ' ' + textColors[event.type]" aria-label="Tipo de experiencia">
+          <md-icon>{{ icons[event.type] }}</md-icon>
+        </md-button>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-event-wrapper" layout="row" layout-align="start center">
+    <div class="timeline-event-right" layout="column" flex flex-gt-sm="50" flex-offset-gt-sm="50">
+      <div layout="row">
+      </div>
+    </div>
+  </div>
+</md-content>

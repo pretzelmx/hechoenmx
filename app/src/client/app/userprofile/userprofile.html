@@ -1,0 +1,32 @@
+<div class="cover-page" layout="column" layout-align="center center" ng-style="{'background-image': 'url(' + userprofile.cover_page + ')'}" flex>
+  <div class="scrim-bottom-up"></div>
+  <div class="info" layout "row" layout-align="center center" flex>
+    <div class="md-padding" layout="column">
+      <img ng-src="{{userprofile.avatar}}">
+    </div>
+    <div class="md-padding" layout="column" layout-align="center start">
+      <h1 class="md-headline">{{userprofile.name}}<br>{{userprofile.activity}}</h1>
+      <div layout="row" layout-align="start center">
+        <span class="md-body-2">{{userprofile.followers | number}}</span><span class="md-body-1">seguidores</span><span>|</span><span class="md-body-2">{{userprofile.visits | number}}</span> <span class="md-body-1">visitas</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="actions" ng-if="canEdit && showActions">
+  <md-button class="md-fab md-mini hmx-appear-soft" ng-click="showAlert($event, '', 'En la versión completa podrás editar tu perfil :D')" aria-label="chat">
+    <md-icon>edit_mode</md-icon>
+  </md-button>
+</div>
+<div id="actions" class="actions" ng-if="!canEdit && showActions">
+  <md-button class="md-fab md-mini hmx-appear-soft" ng-click="showAlert($event, '', 'En la versión completa se enviará una solicitud de contacto :D')" aria-label="Agregar contacto">
+    <md-icon>person_add</md-icon>
+  </md-button>
+  <md-button class="md-fab md-mini hmx-appear-soft" ng-click="showAlert($event, '', 'En la versión completa podrás enviar mensajes directos :D')" aria-label="Enviar mensaje">
+    <md-icon>chat</md-icon>
+  </md-button>
+</div>
+<md-tabs md-selected="selectedIndex" md-center-tabs md-border-bottom md-swipe-content md-no-disconnect md-autoselect>
+  <md-tab ng-repeat="tab in tabs" label="{{tab.title}}">
+    <div ng-include="tab.content"></div>
+  </md-tab>
+</md-tabs>

@@ -1,0 +1,56 @@
+{
+  "name": "Project",
+  "plural": "projects",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "org.projects"
+    }
+  },
+  "properties": {
+    "created": {
+      "type": "date",
+      "default": "$now"
+    },
+    "updated": {
+      "type": "date",
+      "default": "$now"
+    },
+    "image": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "organization": {
+      "type": "belongsTo",
+      "model": "Organization",
+      "foreignKey": "organizationId"
+    },
+    "stack": {
+      "type": "hasMany",
+      "model": "Technology",
+      "through": "Stack"
+    },
+    "images": {
+      "type": "hasMany",
+      "model": "CDN",
+      "foreignKey": "projectId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

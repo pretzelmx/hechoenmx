@@ -1,0 +1,56 @@
+<md-content ng-if="!user.id" layout="column" flex>
+  <div class="hmx-jumbotron" layout="column" layout-align="center center" flex>
+    <div class="scrim-top-down"></div>
+    <h2 class="white-text text-center">La red social para <br> innovadores tecnológicos en México</h2>
+    <md-button class="md-raised md-accent btn-large" ui-sref="signup">unete ya!</md-button>
+  </div>
+  <div class="hmx-wrap" layout="row" style="margin-top: 36px;">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+      <div layout="column" layout-gt-sm="row">
+        <div class="md-padding" layout="column" layout-align="start center" flex flex-gt-sm="33">
+          <md-icon class="md-100 md-primary">explore</md-icon>
+          <h4 class="md-headline" style="margin-bottom: 8px;">Explora</h4>
+          <p class="md-body-1 text-center">Busca y encuentra a los actores del ambito tecnologico en Mexico.</p>
+        </div>
+        <div class="md-padding" layout="column" layout-align="start center" flex flex-gt-sm="33">
+          <md-icon class="md-100 md-primary">track_changes</md-icon>
+          <h4 class="md-headline" style="margin-bottom: 8px;">Descubre</h4>
+          <p class="md-body-1 text-center">Mantente informado sobre convocatorias, oportunidades de vinculacion.</p>
+        </div>
+        <div class="md-padding" layout="column" layout-align="start center" flex flex-gt-sm="33">
+          <md-icon class="md-100 md-primary">forum</md-icon>
+          <h4 class="md-headline" style="margin-bottom: 8px;">Comunicate</h4>
+          <p class="md-body-1 text-center">Ponte en contacto con las persona y organizaciones con las que compartas interes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</md-content>
+<md-content ng-if="user.id" layout="column" flex>
+  <div class="hmx-jumbotron" layout="column" layout-align="center center" flex>
+    <div class="scrim-top-down"></div>
+    <h2 class="white-text text-center md-display-1">Bienvenido {{user.name}}</h2>
+  </div>
+  <md-content ng-if="user.id" class="md-padding grey lighten-4">
+    <div flex-offset-gt-md="20" flex-gt-md="60" layout="column" flex ng-init="coments = {};">
+      <div layout="row" ng-repeat="item in [1,2,3,4,5,6,7,8,9]" flex>
+        <md-card flex>
+          <div class="md-toolbar-tools">
+            <md-icon class="mg-r">account_circle</md-icon>
+            <h2>Publicación ejemlo</h2>
+            <span flex></span>
+            <md-button class="md-icon-button">
+              <md-icon class="md-accent">favorite</md-icon>
+            </md-button>
+          </div>
+          <md-card-content>
+            <md-input-container flex>
+              <label>Comentarios</label>
+              <textarea ng-model="comments[item]" columns="1" md-maxlength="150"></textarea>
+            </md-input-container>
+          </md-card-content>
+        </md-card>
+      </div>
+    </div>
+  </md-content>
+</md-content>

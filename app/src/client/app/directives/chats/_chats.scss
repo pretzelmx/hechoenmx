@@ -1,0 +1,16 @@
+md-list-item.md-2-line,
+md-list-item.md-2-line > .md-no-style,
+md-list-item.md-3-line,
+md-list-item.md-3-line > .md-no-style {
+  align-items: flex-start;
+  justify-content: start;
+}
+
+md-list-item.md-2-line .md-list-item-text,
+md-list-item.md-2-line>.md-no-style .md-list-item-text,
+md-list-item.md-3-line .md-list-item-text,
+md-list-item.md-3-line>.md-no-style .md-list-item-text {
+  flex: 1;
+  margin: auto;
+  text-overflow: ellipsis;
+}

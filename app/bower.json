@@ -1,0 +1,30 @@
+{
+  "name": "HechoEn.MX-app",
+  "version": "0.1.0",
+  "description": "Prototipo de aplicación para Reto HechoEn.MX",
+  "authors": [],
+  "license": "MIT",
+  "homepage": "https://gitlab.com/hechoenmx/app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.4.7",
+    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "bardjs": "~0.0.3"
+  },
+  "dependencies": {
+    "material-design-icons": "~2.0.0",
+    "angular-material": "0.11.3",
+    "angular-ui-router": "~0.2.15",
+    "moment": "~2.10.6",
+    "google-map": "PolymerLabs/google-map#~1.1.5",
+    "google-map-markerclusterer": "~1.0.0",
+    "angular-resource": "~1.4.7"
+  },
+  "resolutions": {
+    "angular": "1.4.7"
+  }
+}

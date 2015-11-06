@@ -1,0 +1,13 @@
+<form ng-submit="$event.preventDefault()" class="md-primary" flex>
+  <md-progress-circular class="md-warn" md-diameter="20px" md-mode="{{ progressMode }}" ng-if="$mdMedia('gt-md')"></md-progress-circular>
+  <md-button class="md-icon-button hmx-searchbox-button-left" ng-if="!progressMode && $mdMedia('gt-sm')" ng-click="focusInput()">
+    <md-icon>search</md-icon>
+  </md-button>
+  <input id="hmx-searchbox-input" type="text" placeholder="Busca startups, inversionistas, convocatorias y más" ng-model="searchTerm" ng-class="{ 'regular-padding': !speechRecognitionAvailable && !searchTerm }" autocomplete="off" flex>
+  <md-button class="md-icon-button hmx-appear-soft hmx-searchbox-button-right" ng-if="speechRecognitionAvailable && showMic" ng-click="toggleRecognize($event)" ng-class="{ 'md-accent': recognizing }">
+    <md-icon>mic</md-icon>
+  </md-button>
+  <md-button class="md-icon-button hmx-appear-soft hmx-searchbox-button-right" ng-if="showClose" ng-click="clearInput()">
+    <md-icon>close</md-icon>
+  </md-button>
+</form>

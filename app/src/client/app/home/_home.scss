@@ -1,0 +1,27 @@
+.hmx-jumbotron {
+  min-height: 250px;
+  // max-height: 250px;
+  position: relative;
+  overflow: hidden;
+  background-image: url('/images/coworking.jpeg'); 
+  background-size: cover;
+  background-position: center center;
+  h2, button {
+  	z-index: 1;
+  }
+  .md-button.md-raised.btn-large {
+    padding: 4px 30px;
+  }
+}
+
+@media #{$medium-and-up} {
+  .hmx-jumbotron {
+    max-height: 300px;
+  }
+}
+
+@media #{$large-and-up} {
+  .hmx-jumbotron {
+    max-height: 400px;
+  }
+}

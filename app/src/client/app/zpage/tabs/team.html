@@ -1,0 +1,20 @@
+<md-tab-content class="grey lighten-4">
+  <md-content class="md-padding hmx-wrap grey lighten-4" flex-offset-gt-md="10" flex-gt-md="80" layout="column" layout-gt-sm="row" layout-align="center" flex>
+    <md-card class="team-member" ng-repeat='user in page._team' flex flex-md="50" flex-gt-md="33">
+      <div class="team-member-cover" ng-style="{'background-image': 'url(' + user.cover_page + ')'}" layout="row" layout-align="center center">
+        <div class="hmx-scrim-blur"></div>
+        <img class="team-member-image" ng-src="{{user.avatar}}">
+      </div>
+      <md-card-content>
+        <h2 class="md-title">{{user.name}}</h2>
+        <h4 class="md-subheader">{{user.job}}</h4>
+      </md-card-content>
+      <div class="md-actions" layout="row" flex>
+        <span flex></span>
+        <md-button class="md-icon-button" ui-sref="userprofile({username: user.username, tabId: 'sobre-mi'})" aria-label="Ver más">
+          <md-icon>arrow_forward</md-icon>
+        </md-button>
+      </div>
+    </md-card>
+  </md-content>
+</md-tab-content>

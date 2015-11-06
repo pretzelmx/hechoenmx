@@ -1,0 +1,85 @@
+// Searchbox
+.hmx-searchbox-button {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+}
+
+.md-navbar-search-theme {
+  hmx-searchbox {
+    form {
+      background-color: white;
+    }
+    input {
+      &:not(.md-input) {
+        &::-webkit-input-placeholder {
+          color: rgba(0, 0, 0, .54);
+        }
+      }
+    }
+  }
+}
+
+hmx-searchbox {
+  height: 40px;
+  form {
+    position: relative;
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 2px;
+    display: flex;
+    height: 100%;
+  }
+  md-progress-circular {
+    position: absolute;
+    top: -30px;
+    left: -20px;
+  }
+  input {
+    &:not(.md-input) {
+      font-size: 14px;
+      box-sizing: border-box;
+      border: none;
+      box-shadow: none;
+      outline: none;
+      background: transparent;
+      padding: 0 50px;
+      &::-webkit-input-placeholder {
+        color: white;
+      }
+      &.regular-padding {
+        padding-right: 24px;
+      }
+    }
+  }
+  .md-button {
+    &.md-icon-button {
+      md-icon {
+        line-height: 16px;
+      }
+      &.hmx-searchbox-button-left {
+        @extend .hmx-searchbox-button;
+        left: 0;
+      }
+      &.hmx-searchbox-button-right {
+        @extend .hmx-searchbox-button;
+        right: 0;
+        &.md-accent {
+          md-icon {
+            animation: recognizing 2s infinite;
+          }
+          @keyframes recognizing {
+            0% {
+              opacity: 1;
+            }
+            50% {
+              opacity: .5;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

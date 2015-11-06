@@ -1,0 +1,53 @@
+<md-tab-content class="grey lighten-4">
+  <md-content class="md-padding hmx-wrap grey lighten-4" flex-offset-gt-md="10" flex-gt-md="80" layout="column" layout-gt-sm="row" layout-align="center" flex>
+    <md-card flex flex-md="50" flex-gt-md="20">
+      <div class="md-padding md-title blue white-text">
+        <md-icon class="white-text">info_outline</md-icon> Información básica
+      </div>
+      <md-card-content>
+        <div ng-if="page.birthday">
+          <span class="md-body-2 mg-r">Inicio de operaciones:</span>
+          <span class="md-body-1">{{moment(page.birthday).format('DD [de] MMMM [de] YYYY')}}</span>
+        </div>
+        <div ng-if="page.location">
+          <span class="md-body-2 mg-r">Ubicación:</span>
+          <span class="md-body-1">{{page.location.city}}, {{page.location.state}}</span>
+        </div>
+      </md-card-content>
+    </md-card>
+    <md-card flex flex-gt-sm="30" ng-if="page._description">
+      <div class="md-padding md-title green white-text">
+        <md-icon class="white-text">description</md-icon> Resumen
+      </div>
+      <md-card-content>
+        <p class="md-body-1 justify"><md-icon style="transform: scale(-1,-1)">format_quote</md-icon><span ng-bind-html="page._description"></span><md-icon>format_quote</md-icon></p>
+      </md-card-content>
+    </md-card>
+    <md-card flex flex-md="50" flex-gt-md="20" ng-if="page.phones && page.phones.length || page.email">
+      <div class="md-padding md-title purple white-text">
+        <md-icon class="white-text">contact_phone</md-icon> Contacto
+      </div>
+      <md-card-content>
+        <div ng-if="page.phones.length" ng-repeat="phone in page.phones">
+          <span class="md-body-2 mg-r" >{{phone.type}}:</span>
+          <span class="md-body-1"><a ng-href="tel:+{{phone.country}}{{phone.area}}{{phone.number}}">({{phone.area}}) {{phone.number}}</a> </span>
+        </div>
+        <div ng-if="page.email">
+          <span class="md-body-2 mg-r">Email:</span>
+          <span class="md-body-1"><a ng-href="mailto:{{page.email}}">{{page.email}}</a> </span>
+        </div>
+      </md-card-content>
+    </md-card>
+    <md-card flex flex-md="50" flex-gt-md="20" ng-if="page.links && page.links.length">
+      <div class="md-padding md-title blue-grey white-text">
+        <md-icon class="white-text">link</md-icon> Enlaces
+      </div>
+      <md-card-content>
+        <div ng-repeat="link in page.links">
+          <span class="md-body-2 mg-r" >{{link.type}}:</span>
+          <span class="md-body-1"><a ng-href="{{link.href}}" target="_blank">{{link.name}}</a> </span>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+</md-tab-content>

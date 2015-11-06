@@ -1,0 +1,9 @@
+<md-list>
+  <md-list-item class="md-2-line" ng-class="{'grey lighten-3': !notification.watched }" ng-repeat="notification in notifications" ng-click="showAlert(notification)">
+    <img ng-src="{{notification.avatar}}" class="md-avatar" alt="" />
+    <div class="md-list-chat-text">
+      <h3 class="md-body-2" style="margin-top: 10px; margin-bottom: 0;">{{notification.name}}</h3>
+      <span class="md-body-1">{{notification.message}}</span>
+    </div>
+  </md-list-item>
+</md-list>

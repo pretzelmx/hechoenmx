@@ -1,0 +1,136 @@
+<md-toolbar class="md-whiteframe-z2" layout="row" ng-class="{ 'white': search.state && !$mdMedia('gt-md')}" md-theme="{{ theme }}" md-theme-watch>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button arrow-back" ng-if="mayGoBack" ng-click="goBack()">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
+    <a class="md-title logo-title" ng-class="{ 'increase-left': !search.state && !mayGoBack }" ui-sref="home" ng-hide="search.state && !$mdMedia('gt-md')"><h1>HMX</h1></a>
+    <hmx-searchbox ng-if="search.state || $mdMedia('gt-md')" ng-class="{ 'media-sm': $mdMedia('sm') }" media="media" search-term="search.term" on-focus="goSearch" on-results="updateResults" flex></hmx-searchbox>
+    <span ng-hide="search.state || $mdMedia('gt-md')" flex></span>
+    <!-- search state navbar buttons in small screen -->
+    <md-menu ng-if="search.state && $mdMedia('sm')" md-position-mode="target-right target">
+      <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <md-icon md-menu-origin>more_vert</md-icon>
+      </md-button>
+      <md-menu-content width="2">
+        <md-menu-item>
+          <md-button ng-click="search.view.toggle()" aria-label="Vistas">
+            <md-icon ng-if="search.view.cards">view_list</md-icon>
+            <span ng-if="search.view.cards">Ver lista</span>
+            <md-icon ng-if="search.view.list">view_module</md-icon>
+            <span ng-if="search.view.list">Ver tarjetas</span>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="search.sidenav.toggle()">
+            <md-icon>map</md-icon>
+            Ver mapa
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-repeat="option in sortOptions">
+          <md-button ng-click="option.action()">
+            <md-icon>{{option.icon}}</md-icon>
+            {{option.str}}
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+    <!-- search state navbar buttons -->
+    <div ng-if="search.state && $mdMedia('gt-sm')" layout="column">
+      <div layout="row">
+        <md-button class="md-icon-button" ng-click="search.view.toggle()" aria-label="Vistas">
+          <md-icon ng-if="search.view.cards">view_list</md-icon>
+          <md-icon ng-if="search.view.list">view_module</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="search.sidenav.toggle()" ng-disabled="search.view.list && $mdMedia('gt-md')">
+          <md-icon>map</md-icon>
+        </md-button>
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin>sort_by_alpha</md-icon>
+          </md-button>
+          <md-menu-content width="2">
+            <md-menu-item ng-repeat="option in sortOptions">
+              <md-button ng-click="option.action()">
+                <md-icon>{{option.icon}}</md-icon>
+                {{option.str}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Filtros" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin>filter_list</md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="filter in filters">
+              <md-input-container style="margin-right: 16px;">
+                <label>{{filter.str}}</label>
+                <md-select ng-model="search.filters[filter.id]">
+                  <md-option ng-repeat="option in filter.options" value="{{option.value}}">{{option.str}}</md-option>
+                </md-select>
+              </md-input-container>
+            </md-menu-item>
+            <md-menu-item style="margin-top: 16px;">
+              <md-button class="teal-text" ng-click="search.initFilters()" style="text-align: center;">LIMPIAR FILTROS</md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+    <!-- navbar go search button -->
+    <div ng-if="!search.state && !$mdMedia('gt-md')" layout="column">
+      <div layout="row">
+        <md-button class="md-icon-button" ng-click="goSearch()" aria-label="Buscar">
+          <md-icon>search</md-icon>
+        </md-button>
+        <md-menu ng-if="!user.id" md-position-mode="target-right target">
+          <md-button aria-label="Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin>more_vert</md-icon>
+          </md-button>
+          <md-menu-content class="white" width="2">
+            <md-menu-item>
+              <md-button ui-sref="signup">
+                <md-icon>mode_edit</md-icon>
+                Regístrate
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ui-sref="login">
+                <md-icon>input</md-icon>
+                Iniciar sesión
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-menu ng-if="user.id" md-position-mode="target-right target">
+          <md-button aria-label="Menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-menu-origin>more_vert</md-icon>
+          </md-button>
+          <md-menu-content class="white" width="3">
+            <hmx-accountmenu user="user"></hmx-accountmenu>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+    <!-- navbar buttons people, chats, notifications and account -->
+    <div ng-if="!search.state && $mdMedia('gt-md')" layout="column" layout-align="center end">
+      <div ng-if="!user.id" layout="row">
+        <md-button ui-sref="signup">regístrate</md-button>
+        <md-button ui-sref="login">iniciar sesión</md-button>
+      </div>
+      <div ng-if="user.id" layout="row">
+        <md-button id="{{ menu.id }}" class="md-icon-button" ng-class="{ 'hmx-image-button': menu.image}" ng-repeat="menu in menus" ng-if="(menu.id === 'account' || !search.state) && $mdMedia('gt-md')" ng-mousedown="vm.popover.close()" ng-click="vm.popover.toggle(menu.id)" aria-label="{{ menu.id }}">
+          <md-icon ng-if="menu.icon">{{ menu.icon }}</md-icon>
+          <span class="unwatched-badge" ng-if="menu.icon" ng-show="unwatched[menu.id]">{{ unwatched[menu.id] }}</span>
+          <img class="circle" ng-if="menu.image" ng-src="{{ menu.image }}" alt="César Tolosa" aria-label="Cuenta">
+        </md-button>
+      </div>
+    </div>
+  </div>
+</md-toolbar>
+<md-whiteframe id="{{ popover.id }}-popover" class="popover {{ popover.id }} md-whiteframe-6dp" ng-repeat="popover in menus" ng-if="vm.popover.current[popover.id]" layout="column">
+  <hmx-people ng-if="popover.id === 'people'" people="people"></hmx-people>
+  <hmx-chats ng-if="popover.id === 'chats'" chats="chats"></hmx-chats>
+  <hmx-notifications ng-if="popover.id === 'notifications'" notifications="notifications"></hmx-notifications>
+  <hmx-accountmenu ng-if="popover.id === 'account'" user="user"></hmx-accountmenu>
+</md-whiteframe>

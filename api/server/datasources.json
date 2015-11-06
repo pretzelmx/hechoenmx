@@ -1,0 +1,19 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "hechoenmx",
+    "username": "",
+    "password": "",
+    "name": "mongodb",
+    "connector": "mongodb"
+  },
+  "memory": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql": {
+    "name": "mysql",
+    "connector": "mysql"
+  }
+}

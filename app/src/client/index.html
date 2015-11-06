@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ng-app="hmx" ng-strict-di>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title ng-bind="title"></title>
+  <base href="/">
+  <script src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="/bower_components/google-map/google-map.html">
+  <link rel="import" href="/bower_components/google-map/google-map-marker.html">
+  <link rel="import" href="/bower_components/google-map/google-map-poly.html">
+  <link rel="import" href="/bower_components/google-map/google-map-directions.html">
+  <link rel="import" href="/bower_components/google-map-markerclusterer/google-map-markerclusterer.html">
+  <!-- build:css css/libs.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css css/app.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/.tmp/hmx.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+
+<body class="ng-cloak" ng-class="{ 'no-pad': state.login || state.signup }" ng-controller="ShellController" ng-cloak>
+  <header ng-hide="state.login || state.signup">
+    <hmx-navbar class="fixed-top"></hmx-navbar>
+  </header>
+  <div layout="row" style="height: 100%">
+    <ui-view layout="column" flex></ui-view>
+    <div layout="column" ng-show="search.state">
+      <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="search-options" md-is-locked-open="(search.sidenav.locked || search.view.list) && $mdMedia('gt-md')" ng-include="'app/layout/sidenav/sidenav.html'" layout="column" flex></md-sidenav>
+    </div>
+  </div>
+  <!-- <md-fab-speed-dial ng-if="!user._id" md-direction="up" md-open="isOpen" class="md-scale md-fab-bottom-right" ng-class="{ 'md-hover-full': demo.hover }" ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
+    <md-fab-trigger>
+      <md-button aria-label="menu" class="md-fab md-accent">
+        <md-icon aria-label="Nuevo">add</md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <div>
+        <md-button aria-label="" class="md-fab md-raised md-mini green">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="true">
+            Nuevo chat
+          </md-tooltip>
+          <md-icon>chat</md-icon>
+        </md-button>
+      </div>
+      <div>
+        <md-button aria-label="" class="md-fab md-raised md-mini blue">
+          <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="true">
+            Organización
+          </md-tooltip>
+          <md-icon>group_work</md-icon>
+        </md-button>
+      </div>
+    </md-fab-actions>
+  </md-fab-speed-dial> -->
+  <!-- build:js js/lib.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-aria/angular-aria.js"></script>
+  <script src="/bower_components/angular-material/angular-material.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:js js/app.js -->
+  <!-- inject:js -->
+  <script src="/src/client/app/hmx.module.js"></script>
+  <script src="/src/client/app/actors/actors.module.js"></script>
+  <script src="/src/client/app/auth/auth.module.js"></script>
+  <script src="/src/client/app/core/core.module.js"></script>
+  <script src="/src/client/app/data/data.module.js"></script>
+  <script src="/src/client/app/data/lb-services.module.js"></script>
+  <script src="/src/client/app/directives/directives.module.js"></script>
+  <script src="/src/client/app/home/home.module.js"></script>
+  <script src="/src/client/app/layout/layout.module.js"></script>
+  <script src="/src/client/app/login/login.module.js"></script>
+  <script src="/src/client/app/search/search.module.js"></script>
+  <script src="/src/client/app/signup/signup.module.js"></script>
+  <script src="/src/client/app/userprofile/userprofile.module.js"></script>
+  <script src="/src/client/app/zpage/page.module.js"></script>
+  <script src="/src/client/app/utils/popover/popover.module.js"></script>
+  <script src="/src/client/app/utils/router/router.module.js"></script>
+  <script src="/src/client/app/utils/speechrecognition/speechrecognition.module.js"></script>
+  <script src="/src/client/app/actors/actors.controller.js"></script>
+  <script src="/src/client/app/actors/actors.route.js"></script>
+  <script src="/src/client/app/auth/auth.service.js"></script>
+  <script src="/src/client/app/core/core.config.js"></script>
+  <script src="/src/client/app/core/core.constants.js"></script>
+  <script src="/src/client/app/core/core.run.js"></script>
+  <script src="/src/client/app/data/data.service.js"></script>
+  <script src="/src/client/app/home/home.controller.js"></script>
+  <script src="/src/client/app/home/home.route.js"></script>
+  <script src="/src/client/app/layout/shell.controller.js"></script>
+  <script src="/src/client/app/login/login.controller.js"></script>
+  <script src="/src/client/app/login/login.route.js"></script>
+  <script src="/src/client/app/search/search.controller.js"></script>
+  <script src="/src/client/app/search/search.route.js"></script>
+  <script src="/src/client/app/signup/signup.controller.js"></script>
+  <script src="/src/client/app/signup/signup.route.js"></script>
+  <script src="/src/client/app/userprofile/userprofile.controller.js"></script>
+  <script src="/src/client/app/userprofile/userprofile.route.js"></script>
+  <script src="/src/client/app/zpage/page.controller.js"></script>
+  <script src="/src/client/app/zpage/page.route.js"></script>
+  <script src="/src/client/app/directives/accountmenu/hmx-accountmenu.directive.js"></script>
+  <script src="/src/client/app/directives/chats/hmx-chats.directive.js"></script>
+  <script src="/src/client/app/directives/navbar/hmx-navbar.directive.js"></script>
+  <script src="/src/client/app/directives/notifications/hmx-notifications.directive.js"></script>
+  <script src="/src/client/app/directives/people/hmx-people.directive.js"></script>
+  <script src="/src/client/app/directives/searchbox/hmx-searchbox.directive.js"></script>
+  <script src="/src/client/app/directives/timeline/hmx-timeline.directive.js"></script>
+  <script src="/src/client/app/utils/popover/popover.service.js"></script>
+  <script src="/src/client/app/utils/router/router-helper.provider.js"></script>
+  <script src="/src/client/app/utils/speechrecognition/speechrecognition.service.js"></script>
+  <!-- endinject -->
+  <!-- inject:templates:js -->
+  <!-- endinject -->
+  <script src="/bower_components/moment/locale/es.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

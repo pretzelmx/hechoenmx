@@ -1,0 +1,100 @@
+{
+  "name": "UserModel",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mongodb": {
+      "collection": "users"
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string",
+      "index": {
+        "unique": true
+      },
+      "require": true
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "type": {
+      "type": "string"
+    },
+    "avatar": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "cover": {
+      "type": "object",
+      "relation": {
+        "type": "belongsTo",
+        "model": "CDN"
+      }
+    },
+    "followers": {
+      "type": "number"
+    },
+    "followings": {
+      "type": "number"
+    },
+    "phones": {
+      "type": [
+        "string"
+      ]
+    },
+    "expertice": {
+      "type": [
+        "object"
+      ]
+    },
+    "links": {
+      "type": [
+        "object"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "posts": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "userId"
+    },
+    "skills": {
+      "type": "hasMany",
+      "model": "Technology",
+      "through": "Stack"
+    },
+    "organizations": {
+      "type": "hasMany",
+      "model": "Organization",
+      "through": "Owner"
+    },
+    "teams": {
+      "type": "hasMany",
+      "model": "Organization",
+      "through": "Team"
+    },
+    "images": {
+      "type": "hasMany",
+      "model": "CDN",
+      "foreignKey": "userId"
+    },
+    "notifications": {
+      "type": "hasMany",
+      "model": "Message",
+      "foreignKey": "receiverId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
