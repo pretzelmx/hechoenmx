@@ -2,11 +2,17 @@ HECHOEN.MX
 ==========
 El proyecto Hechoen.mx fue desarrollo por <b>Pretzel</b> y cumple con las especificaciones del reto público <b><a href="http://retos.datos.gob.mx/organizaciones/12/retos/11-reto-hechoen-mx">#HECHOEN.MX</a></b>
 
+<h4>DEMO</h4>
+
+Puede acceder al demo de la aplicación en los siguientes enlaces:
+
+<b><a href="http://159.203.136.228:3000/explorer/">API</a></b>
+
+<b><a href="http://159.203.136.228/">APP</a></b>
+
 <h4>BACKEND</h4>
 
 El proyecto cuenta con una REST API construida en LoopBack, framework de NodeJS de StrongLoop, compañía de IBM.
-
-<b><a href="http://159.203.136.228:3000/explorer/">DEMO</a></b>
 
 <b><a href="http://loopback.io/">Más información</a></b>
 
